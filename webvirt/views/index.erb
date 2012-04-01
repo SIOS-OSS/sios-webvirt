@@ -1,12 +1,19 @@
 </b>
 <hr>
 Active VMs<br>
-<% for act_vm in @act_vm_list %>
-    <%= act_vm %><br>
-<% end %>
+<form method="POST" action="/vm_shutdown">
+    <% for act_vm in @act_vm_list_name %>
+        <input type="radio" name="vm_name" value="<%= act_vm %>"/> <%= act_vm %><br>
+    <% end %>
+    <input type="submit" name="Submit" value="shutdown">
+    <input type="submit" name="Submit" value="destroy">
+</form>
 
 <hr>
 Standby VMs<br>
-<% for sby_vm in @sby_vm_list %>
-    <%= sby_vm %><br>
-<% end %>
+<form method="POST" action="/vm_start">
+    <% for sby_vm in @sby_vm_list %>
+        <input type="radio" name="vm_name" value="<%= sby_vm %>"/> <%= sby_vm %><br>
+    <% end %>
+    <input type="submit" name="Submit" value="start">
+</form>
