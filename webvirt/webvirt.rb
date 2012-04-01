@@ -53,6 +53,10 @@ end
 post '/vm_shutdown' do
   conn = Libvirt::open("qemu+ssh://root@kvmhost/system")
   vm = conn.lookup_domain_by_name(params[:vm_name])
-  vm.shutdown
+  if params[:Submit] == "shutdown"
+    vm.shutdown
+  elsif params[:Submit] == "destroy"
+    vm.destroy
+  end
   redirect '/'
 end
