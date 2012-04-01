@@ -1,12 +1,13 @@
-</b>
+<b>My KVM VMs</b>
 <hr>
 Active VMs<br>
 <form method="POST" action="/vm_shutdown">
     <% for act_vm in @act_vm_list_name %>
-        <input type="radio" name="vm_name" value="<%= act_vm %>"/> <%= act_vm %><br>
+        <input type="radio" name="vm_name" value="<%= act_vm %>"/> <%= act_vm %> |
+        <a href="Javascript:w=window.open('/vnc?name=<%= act_vm %>','VNC','Width=690,Height=500');w.focus();">VNC</a>
+        <br>
     <% end %>
     <input type="submit" name="Submit" value="shutdown">
-    <input type="submit" name="Submit" value="destroy">
 </form>
 
 <hr>
